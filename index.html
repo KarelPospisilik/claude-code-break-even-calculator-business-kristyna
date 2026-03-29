@@ -90,7 +90,7 @@
       const profit = revenue - totalCosts;
       const margin = revenue > 0 ? (profit / revenue) * 100 : 0;
 
-      const perWeek = (breakEvenCeil / 4.33).toFixed(1);
+      const perWeek = (breakEvenCeil / 4.33).toFixed(1).replace(".", ",");
 
       const barMax = Math.max(totalFixed + totalVarCosts * 2, revenue * 1.1);
       const revenueBar = Math.min((revenue / barMax) * 100, 100);
@@ -104,7 +104,7 @@
             borderBottom: "3px solid rgba(255,255,255,0.3)" }}>
             <h1 style={{ margin: 0, fontSize: "20px", fontWeight: "900", color: "white",
               letterSpacing: "-0.5px", textTransform: "uppercase" }}>
-              BREAK-EVEN <span style={{ color: "white", opacity: 0.75 }}>KALKULAČKA</span>
+              BREAK-EVEN POINT <span style={{ color: "white", opacity: 0.75 }}>KALKULAČKA</span>
             </h1>
             <div style={{ border: "1.5px solid rgba(255,255,255,0.5)", padding: "4px 10px",
               color: "white", fontSize: "10px", fontWeight: "700",
@@ -128,7 +128,7 @@
                   <Slider label="Hrubá mzda (1 osoba)" value={salaryGross} min={0} max={80000} step={1000}
                     onChange={setSalaryGross} format={fmt} />
                   <div style={{ background: LIGHT_BG, padding: "12px 14px", borderLeft: `3px solid ${RED_ACCENT}`, marginTop: "8px" }}>
-                    <div style={{ fontSize: "10px", color: MID_GRAY, fontFamily: "monospace", marginBottom: "4px", letterSpacing: "1px" }}>CELKOVÉ MZDOVÉ NÁKLADY (VČETNĚ ODVODŮ 33,8%)</div>
+                    <div style={{ fontSize: "10px", color: MID_GRAY, fontFamily: "monospace", marginBottom: "4px", letterSpacing: "1px" }}>CELKOVÉ MZDOVÉ NÁKLADY (VČETNĚ ODVODŮ 33,8 %)</div>
                     <div style={{ fontSize: "14px", fontWeight: "900", color: PLP_BLUE }}>{fmt(totalSalaryCost)}</div>
                   </div>
                 </div>
@@ -155,7 +155,7 @@
                   <div style={{ background: PLP_BLUE, padding: "12px 20px" }}>
                     <span style={{ color: RED_ACCENT, fontWeight: "900", fontSize: "11px",
                       letterSpacing: "2px", fontFamily: "monospace" }}>
-                      ◎ BREAK-EVEN BOD
+                      ◎ BREAK-EVEN POINT
                     </span>
                   </div>
                   <div style={{ padding: "28px", textAlign: "center" }}>
@@ -167,16 +167,6 @@
                       <>
                         <div style={{ fontSize: "13px", color: MID_GRAY, marginTop: "8px" }}>
                           ≈ <strong style={{ color: DARK_GRAY }}>{perWeek}</strong> workshopů / týden
-                        </div>
-                        <div style={{ marginTop: "20px", display: "grid", gridTemplateColumns: "1fr 1fr", gap: "12px" }}>
-                          <div style={{ background: LIGHT_BG, padding: "12px", textAlign: "center" }}>
-                            <div style={{ fontSize: "10px", color: MID_GRAY, fontFamily: "monospace", letterSpacing: "1px" }}>CELKOVÝ FIX / MĚS.</div>
-                            <div style={{ fontSize: "16px", fontWeight: "900", color: PLP_BLUE, marginTop: "4px" }}>{fmt(totalFixed)}</div>
-                          </div>
-                          <div style={{ background: LIGHT_BG, padding: "12px", textAlign: "center" }}>
-                            <div style={{ fontSize: "10px", color: MID_GRAY, fontFamily: "monospace", letterSpacing: "1px" }}>PŘÍSPĚVEK / WS</div>
-                            <div style={{ fontSize: "16px", fontWeight: "900", color: PLP_BLUE, marginTop: "4px" }}>{fmt(contribution)}</div>
-                          </div>
                         </div>
                       </>
                     )}
@@ -224,7 +214,7 @@
                       {profit >= 0 ? "+" : ""}{fmt(profit)}
                     </div>
                     <div style={{ fontSize: "11px", color: MID_GRAY, marginTop: "4px" }}>
-                      Marže: <strong style={{ color: profit >= 0 ? "#2e7d32" : RED_ACCENT }}>{margin.toFixed(1)} %</strong>
+                      Marže: <strong style={{ color: profit >= 0 ? "#2e7d32" : RED_ACCENT }}>{margin.toFixed(1).replace(".", ",")} %</strong>
                     </div>
                   </div>
                 </div>
