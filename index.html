@@ -251,7 +251,7 @@
                   <tbody>
                     {[
                       ["Ostatní fixní náklady", "FIX", fixedCosts],
-                      [`Mzdy (${salaryCount}× ${fmt(salaryGross)} hrubého) + odvody`, "FIX", totalSalaryCost],
+                      [`Mzdy (${salaryCount}× ${fmt(salaryGross)} hrubého) + odvody 33,8 %`, "FIX", totalSalaryCost],
                       [`Variabilní náklady (${targetWorkshops} workshopů × ${fmt(varCost)})`, "VAR", totalVarCosts],
                     ].map(([name, type, val], i) => (
                       <tr key={i} style={{ borderBottom: `1px solid ${BORDER}`, background: i % 2 === 0 ? LIGHT_BG : CARD_BG }}>
@@ -275,9 +275,6 @@
               </div>
             </div>
 
-            <div style={{ marginTop: "12px", fontSize: "10px", color: MID_GRAY, fontFamily: "monospace", letterSpacing: "1px", textAlign: "right" }}>
-              MZDOVÉ ODVODY ZAMĚSTNAVATELE: 33,8% · BREAK-EVEN = FIX / (CENA − VAR. NÁKLADY)
-            </div>
           </div>
         </div>
       );
